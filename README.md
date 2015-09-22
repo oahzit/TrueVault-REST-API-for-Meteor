@@ -1,6 +1,9 @@
 TrueVault for Meteor
 =============================
 
+Forked from woddy:truevault
+- Added vaults with different roles for clinicians and patients
+
 Use the TrueVault REST API easily with Meteor.
 
 # Setup
@@ -20,7 +23,7 @@ Meteor.startup(function(){
 Accounts.onCreateUser(function (options, user) {
   TrueVault.insert({
     default: "Default Value"
-  }, user._id);
+  }, user._id, user._id);
 
   // Keep the default hook's 'profile' behavior.
   if (options.profile){
@@ -54,7 +57,8 @@ A standard Meteor Mongo Collection. Contains a mirror of the currently logged in
 
 A standard Meteor Mongo Collection. Contains the TrueVault mapping for the currently logged in user: 
 ```
-userId: String, 
+clinicianId: String, 
+patientId: String, 
 document_id: String,
 version: Number
 ```
@@ -68,7 +72,7 @@ The `version` is incremented each time `TrueVault.update()` is successfully call
 
 An object with a number of useful methods:
 
-#### TrueVault.insert(doc, userId)
+#### TrueVault.insert(doc, clinicianId, patientId)
 
 The `doc` arg should be a standard JavaScript object to store on TrueVault. The `userId` is used to save the mapping in the `Vault` collection.
 
@@ -122,7 +126,7 @@ HIPAA compliance is highly complex. This Meteor package cannot guarantee you wil
 
 ### License
 
-Copyright (c) 2014 David Woody
+Copyright (c) 2014 Ti Zhao
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
