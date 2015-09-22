@@ -194,6 +194,8 @@ Meteor.methods({
   }, //updateTrueVault
 });
 
+// THIS FUNCTION IS PRETTY HACKED TOGETHER RIGHT NOW
+// should PROBABLY assign roles etc... will deal with later
 var isClinician = function(userId) {
   var user = Meteor.users.findOne(userId);
   if (user.profile) {
