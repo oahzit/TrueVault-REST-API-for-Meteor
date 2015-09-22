@@ -1,7 +1,7 @@
 TrueVault for Meteor
 =============================
 
-Forked from woddy:truevault
+### Forked from https://github.com/davidwoody/TrueVault-REST-API-for-Meteor
 - Added vaults with different roles for clinicians and patients
 
 Use the TrueVault REST API easily with Meteor.
