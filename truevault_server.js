@@ -29,7 +29,7 @@ TrueVault.decode = function (base64) {
   return JSON.parse(baseParse2);
 };
 
-TrueVault.insert = function (doc, userId) {
+TrueVault.insert = function (doc, patientId, clinicianId) {
   if(!doc || typeof doc !== "object"){
     throw new Meteor.Error(400, "No updated object passed to TrueVault.update()");
   }
@@ -47,7 +47,8 @@ TrueVault.insert = function (doc, userId) {
   if(result.data.result === "success"){
     // insert into collection
     return Vault.insert({
-      userId: userId,
+      patientId: patientId,
+      clinicianId: clinicianId,
       document_id: result.data.document_id,
       version: 0
     });
@@ -193,11 +194,19 @@ Meteor.methods({
   }, //updateTrueVault
 });
 
+var isClinician = function(userId) {
+  var user = Meteor.users.findOne(userId);
+  return user.profile.isClinician;
+}
 
 // PUBLISH THE VAULT INFORMATION FOR THE SIGNED IN USER
 Meteor.publish(null, function () {
   if(this.userId){
-    return Vault.find({userId: this.userId});
+    if (isClinician(this.userId)) {
+      return Vault.find({clinicianId: this.userId});
+    } else {
+      return Vault.find({patientId: this.userId});
+    }
   } else {
     this.ready();
   }

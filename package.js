@@ -1,7 +1,7 @@
 Package.describe({
-  summary: "Use the TrueVault REST API easily with Meteor.",
-  version: "0.2.5",
-  git: "https://github.com/davidwoody/TrueVault-REST-API-for-Meteor.git"
+  summary: "Use the TrueVault REST API with Meteor.",
+  version: "0.0.1",
+  git: "https://github.com/oahzit/TrueVault-REST-API-for-Meteor.git"
 });
 
 Package.onUse(function(api) {
@@ -27,6 +27,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('woody:truevault');
-  api.addFiles('woody:truevault-tests.js');
+  api.use('tiz:truevault');
+  api.addFiles('tiz:truevault-tests.js');
 });
