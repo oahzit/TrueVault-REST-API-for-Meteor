@@ -214,6 +214,7 @@ Meteor.publish(null, function () {
       return Vault.find({patientId: this.userId});
     }
   } else {
-    this.ready();
+    // change this
+    return Vault.find()
   }
 });

@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Use the TrueVault REST API with Meteor.",
-  version: "0.0.1",
+  version: "0.0.2",
   git: "https://github.com/oahzit/TrueVault-REST-API-for-Meteor.git"
 });
 
