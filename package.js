@@ -28,5 +28,5 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('tinytest');
   api.use('tiz:truevault');
-  api.addFiles('tiz:truevault-tests.js');
+  api.addFiles('woddy:truevault-tests.js');
 });

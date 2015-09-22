@@ -196,7 +196,11 @@ Meteor.methods({
 
 var isClinician = function(userId) {
   var user = Meteor.users.findOne(userId);
-  return user.profile.isClinician;
+  if (user.profile) {
+    // explicitly check if the user is a clinician
+    return user.profile.isClinician
+  }
+  return false;
 }
 
 // PUBLISH THE VAULT INFORMATION FOR THE SIGNED IN USER
